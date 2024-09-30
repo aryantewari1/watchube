@@ -5,7 +5,7 @@ import videoLogo from "./sidebar images/play-round-icon.png";
 
 const SmallSideBar = () => {
   return (
-    <div className="flex flex-col justify-center items-center py-4">
+    <div className="flex flex-col justify-center items-center py-4 mr-3">
       <div className="flex flex-col justify-center items-center pb-6">
         <img src={homeLogo} className="w-5 h-6 object-contain  mb-3" />
         <p className="text-center text-xs font-[Roboto]">Home</p>

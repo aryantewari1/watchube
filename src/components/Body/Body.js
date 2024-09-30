@@ -8,11 +8,11 @@ const Body = () => {
   return (
     <div className="flex">
       {showSideBar ? (
-        <div className="w-64 top-16 h-screen fixed overflow-y-auto overflow-y-scroll">
+        <div className="w-64 top-16 h-screen fixed overflow-y-auto overflow-y-scroll hide-scrollbar hover:thin-scrollbar">
           <Sidebar />{" "}
         </div>
       ) : (
-        <div className="w-28 top-16 h-screen fixed overflow-y-auto overflow-y-scroll">
+        <div className="w-28  top-16 h-screen fixed overflow-y-auto overflow-y-scroll  hide-scrollbar hover:thin-scrollbar">
           <SmallSideBar />{" "}
         </div>
       )}
