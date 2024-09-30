@@ -3,11 +3,23 @@ import ham from "./ham.png";
 import search from "./search.png";
 import notif from "./notif.png";
 import video from "./video.png";
+import { useDispatch } from "react-redux";
+import { setShowSideBar } from "../../store/Slices/appSlice";
 const Header = () => {
+  const dispatch = useDispatch();
+  const handleSideBar = () => {
+    dispatch(setShowSideBar());
+  };
   return (
     <div className="flex pt-2 z-50 fixed w-full h-12 bg-white">
       <div className="flex flex-[1] items-center ">
-        <img src={ham} className="w-8 h-8 ml-4 mr-3" />
+        <img
+          src={ham}
+          className="w-8 h-8 ml-4 mr-3"
+          onClick={() => {
+            handleSideBar();
+          }}
+        />
         <img src={logo} className="w-36 h-11" />
       </div>
       <div className="flex flex-[4] justify-center">
