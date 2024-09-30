@@ -1,6 +1,6 @@
 import SidebarContainer from "./SidebarContainer";
 import homeLogo from "./sidebar images/home.png";
-import shortsLogo from "./sidebar images/youtube-shorts-white-icon.png";
+import shortsLogo from "./sidebar images/play-round-icon.png";
 import subscriptionLogo from "./sidebar images/movie-media-player-icon.png";
 import userLogo from "./sidebar images/male-icon.png";
 import historyLogo from "./sidebar images/history-icon.png";
@@ -108,10 +108,23 @@ const heading = [
 ];
 const Sidebar = () => {
   return (
-    <div className="w-64 h-screen top-16 bg-gray-200 fixed overflow-y-scroll">
-      {heading.map((data) => (
-        <SidebarContainer key={data.key} section={data} />
-      ))}
+    <div className="pb-20">
+      <div>
+        {heading.map((data) => (
+          <SidebarContainer key={data.key} section={data} />
+        ))}
+      </div>
+      <div className="w-3/4 mx-auto">
+        <div className="text-sm font-[Roboto] text-gray-400 py-4">
+          About Press Copyright Contact us Creator Advertise Developers
+        </div>
+        <div className="text-sm font-[Roboto] text-gray-400 pb-4">
+          Terms Privacy Policy & Safety How YouTube works Test new features
+        </div>
+        <div className="text-sm font-[Roboto] text-gray-400">
+          © 2024 Watchube LLC
+        </div>
+      </div>
     </div>
   );
 };
