@@ -1,7 +1,11 @@
+import Body from "./components/Body/Body";
+import Header from "./components/header/Header";
+
 function App() {
   return (
     <div className="App">
-      <p className="bg-red-600">HELLO NAMASTE WORLD</p>
+      <Header />
+      <Body />
     </div>
   );
 }
