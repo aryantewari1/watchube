@@ -5,12 +5,32 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import appStore from "./store/appStore";
 import { Provider } from "react-redux";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Body from "./components/Body/Body";
+import Watch from "./components/Watch/Watch";
+
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "",
+        element: <Body />,
+      },
+      {
+        path: "/watch",
+        element: <Watch />,
+      },
+    ],
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={appStore}>
-      <App />
+      <RouterProvider router={appRouter} />
     </Provider>
   </React.StrictMode>
 );

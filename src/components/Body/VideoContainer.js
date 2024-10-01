@@ -1,6 +1,7 @@
 import useYtubeVideo from "../../hooks/useYtubeVideo";
 import { useSelector } from "react-redux";
 import VideoCard from "./VideoCard";
+import { Link } from "react-router-dom";
 
 const VideoContainer = () => {
   const videos = useSelector((store) => store.app.videos);
@@ -9,7 +10,9 @@ const VideoContainer = () => {
   return (
     <>
       {videos.map((video) => (
-        <VideoCard key={video.id} info={video} />
+        <Link to={"/watch?v=" + video.id} key={video.id}>
+          <VideoCard info={video} />
+        </Link>
       ))}
     </>
   );

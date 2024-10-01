@@ -5,6 +5,7 @@ import notif from "./notif.png";
 import video from "./video.png";
 import { useDispatch } from "react-redux";
 import { setShowSideBar } from "../../store/Slices/appSlice";
+import { Link } from "react-router-dom";
 const Header = () => {
   const dispatch = useDispatch();
   const handleSideBar = () => {
@@ -21,7 +22,9 @@ const Header = () => {
             handleSideBar();
           }}
         />
-        <img src={logo} className="w-36 h-11" />
+        <Link to="/">
+          <img src={logo} className="w-36 h-11" />
+        </Link>
       </div>
       <div className="flex flex-[4] justify-center h-10">
         <input
@@ -34,9 +37,14 @@ const Header = () => {
         </button>
       </div>
       <div className="flex flex-[1]  items-center justify-end">
-        <img src={notif} className="w-10 h-8 object-contain mx-2" />
-        <img src={video} className="w-10 h-7 object-contain mx-2" />
         <img
+          src={notif}
+          alt="notification"
+          className="w-10 h-8 object-contain mx-2"
+        />
+        <img src={video} alt="video" className="w-10 h-7 object-contain mx-2" />
+        <img
+          alt="videos"
           src="https://yt3.ggpht.com/ytc/AIdro_lO1bg78qyz0HR_ZIH8s5qeSfzYr9fVSd1DukOaqgMnQ42rwYpPYWufcdbL9Z9Zby0O7g=s88-c-k-c0x00ffffff-no-rj"
           className="w-9 h-9 mx-2 mr-10 rounded-full"
         />
