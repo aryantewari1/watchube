@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import ListCard from "./ListCard";
 import useYtubeVideo from "../../hooks/useYtubeVideo";
+import { Link } from "react-router-dom";
 
 const VideoList = () => {
   useYtubeVideo();
@@ -10,7 +11,9 @@ const VideoList = () => {
   return (
     <div className="mt-3">
       {videos.map((video) => (
-        <ListCard info={video} />
+        <Link to={"?v=" + video.id} key={video.id}>
+          <ListCard info={video} />
+        </Link>
       ))}
     </div>
   );
