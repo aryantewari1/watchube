@@ -11,10 +11,11 @@ const Header = () => {
     dispatch(setShowSideBar());
   };
   return (
-    <div className="flex pt-2 z-50 fixed w-full h-12 bg-white">
+    <div className="flex top-0 pt-2 z-50 fixed w-full h-12 bg-white">
       <div className="flex flex-[1] items-center ">
         <img
           src={ham}
+          alt="logo"
           className="w-8 h-8 ml-4 mr-3"
           onClick={() => {
             handleSideBar();
@@ -26,7 +27,7 @@ const Header = () => {
         <input
           type="text"
           placeholder="Search"
-          className="w-1/2 rounded-l-full pl-5 border border-gray-200"
+          className="w-7/12 rounded-l-full pl-5 border font-[Roboto]   border-gray-300"
         />
         <button className=" bg-gray-200 pl-4 pr-6 rounded-r-full object-contain border border-gray-200">
           <img src={search} className="h-6 object-contain" />

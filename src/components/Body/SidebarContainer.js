@@ -1,6 +1,5 @@
 const SidebarContainer = ({ section }) => {
   const { heading, imageList, titleList } = section;
-  console.log(imageList);
   if (imageList === null) return;
   return (
     <div className="border-b border-b-gray-200 px-6 font-[Roboto]">
