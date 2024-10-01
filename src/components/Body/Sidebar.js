@@ -108,7 +108,7 @@ const heading = [
 ];
 const Sidebar = () => {
   return (
-    <div className=" pb-20">
+    <div className="pb-20">
       <div>
         {heading.map((data) => (
           <SidebarContainer key={data.key} section={data} />
