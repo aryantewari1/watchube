@@ -5,10 +5,10 @@ const VideoInfo = () => {
   const video = useSelector((store) => store?.app?.video);
 
   const id = useVideoInfo();
-  console.log(video);
+
   if (video === null) return;
   const { snippet, statistics } = video;
-  console.log(snippet);
+
   return (
     <div>
       <div>

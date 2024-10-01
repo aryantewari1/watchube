@@ -1,11 +1,12 @@
 import LeftContainer from "./LeftContainer";
+import RightContainer from "./RightContainer";
 
 const Watch = () => {
   return (
     <div className="mt-20">
-      <div className="flex">
+      <div className="flex gap-x-6">
         <LeftContainer />
-        <div></div>
+        <RightContainer />
       </div>
     </div>
   );
