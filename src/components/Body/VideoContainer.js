@@ -1,18 +1,18 @@
-import { useEffect } from "react";
-import { YOUTUBE_API } from "../../utils/constant";
+import useYtubeVideo from "../../hooks/useYtubeVideo";
+import { useSelector } from "react-redux";
+import VideoCard from "./VideoCard";
 
 const VideoContainer = () => {
-  const apiKey = process.env.REACT_APP_YTUBE_API_KEY;
-  useEffect(() => {
-    getYoutubeVideos();
-  }, []);
-
-  const getYoutubeVideos = async () => {
-    const data = await fetch(YOUTUBE_API + apiKey);
-    const json = await data.json();
-    console.log(json);
-  };
-  return <div className="flex-[10] bg-slate-200">VideoContainer</div>;
+  const videos = useSelector((store) => store.app.videos);
+  useYtubeVideo();
+  if (videos.length === 0) return;
+  return (
+    <>
+      {videos.map((video) => (
+        <VideoCard key={video.id} info={video} />
+      ))}
+    </>
+  );
 };
 
 export default VideoContainer;

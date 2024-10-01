@@ -11,7 +11,7 @@ const Header = () => {
     dispatch(setShowSideBar());
   };
   return (
-    <div className="flex top-0 pt-2 z-50 fixed w-full h-12 bg-white">
+    <div className="flex top-0 pt-2 z-50 fixed w-full h-14 bg-white">
       <div className="flex flex-[1] items-center ">
         <img
           src={ham}
@@ -23,7 +23,7 @@ const Header = () => {
         />
         <img src={logo} className="w-36 h-11" />
       </div>
-      <div className="flex flex-[4] justify-center">
+      <div className="flex flex-[4] justify-center h-10">
         <input
           type="text"
           placeholder="Search"
