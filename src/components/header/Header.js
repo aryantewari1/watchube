@@ -6,8 +6,20 @@ import video from "./video.png";
 import { useDispatch } from "react-redux";
 import { setShowSideBar } from "../../store/Slices/appSlice";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { YOUTUBE_SEARCH_API } from "../../utils/constant";
 const Header = () => {
+  const [inputValue, setInputValue] = useState("");
   const dispatch = useDispatch();
+  useEffect(() => {
+    handleSearchSuggestion();
+  });
+
+  const handleSearchSuggestion = async () => {
+    const data = await fetch(YOUTUBE_SEARCH_API + inputValue);
+    const json = await data.json();
+    console.log(json);
+  };
   const handleSideBar = () => {
     dispatch(setShowSideBar());
   };
@@ -30,6 +42,10 @@ const Header = () => {
         <input
           type="text"
           placeholder="Search"
+          value={inputValue}
+          onChange={(e) => {
+            setInputValue(e.target.value);
+          }}
           className="w-7/12 rounded-l-full pl-5 border font-[Roboto]   border-gray-300"
         />
         <button className=" bg-gray-200 pl-4 pr-6 rounded-r-full object-contain border border-gray-200">
