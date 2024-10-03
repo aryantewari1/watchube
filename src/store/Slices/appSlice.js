@@ -6,6 +6,7 @@ const appSlice = createSlice({
     showSideBar: true,
     videos: [],
     video: null,
+    searchSuggestions: [],
   },
   reducers: {
     setShowSideBar: (state) => {
@@ -17,7 +18,11 @@ const appSlice = createSlice({
     setVideo: (state, action) => {
       state.video = action.payload;
     },
+    setSearchSuggestions: (state, action) => {
+      state.searchSuggestions = action.payload;
+    },
   },
 });
-export const { setShowSideBar, setVideos, setVideo } = appSlice.actions;
+export const { setShowSideBar, setVideos, setVideo, setSearchSuggestions } =
+  appSlice.actions;
 export default appSlice.reducer;

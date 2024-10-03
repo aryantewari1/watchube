@@ -3,22 +3,29 @@ import ham from "./ham.png";
 import search from "./search.png";
 import notif from "./notif.png";
 import video from "./video.png";
-import { useDispatch } from "react-redux";
-import { setShowSideBar } from "../../store/Slices/appSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setSearchSuggestions,
+  setShowSideBar,
+} from "../../store/Slices/appSlice";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { YOUTUBE_SEARCH_API } from "../../utils/constant";
 const Header = () => {
   const [inputValue, setInputValue] = useState("");
+  const searchSuggestions = useSelector(
+    (store) => store?.app?.searchSuggestions
+  );
   const dispatch = useDispatch();
   useEffect(() => {
     handleSearchSuggestion();
-  });
+  }, [inputValue]);
 
   const handleSearchSuggestion = async () => {
     const data = await fetch(YOUTUBE_SEARCH_API + inputValue);
     const json = await data.json();
     console.log(json);
+    dispatch(setSearchSuggestions(json[1]));
   };
   const handleSideBar = () => {
     dispatch(setShowSideBar());
@@ -38,7 +45,7 @@ const Header = () => {
           <img src={logo} className="w-36 h-11" />
         </Link>
       </div>
-      <div className="flex flex-[4] justify-center h-10">
+      <div className="flex flex-[4] justify-center h-10 relative">
         <input
           type="text"
           placeholder="Search"
@@ -51,6 +58,11 @@ const Header = () => {
         <button className=" bg-gray-200 pl-4 pr-6 rounded-r-full object-contain border border-gray-200">
           <img src={search} className="h-6 object-contain" />
         </button>
+        <div className="absolute w-7/12 bg-white top-10 mr-14 border border-gray-200 shadow-lg rounded-xl">
+          {searchSuggestions.map((s) => {
+            return <p className="w-full px-3 py-2">{s}</p>;
+          })}
+        </div>
       </div>
       <div className="flex flex-[1]  items-center justify-end">
         <img
