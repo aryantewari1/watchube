@@ -10,11 +10,18 @@ const VideoList = () => {
   console.log(videos);
   return (
     <div className="mt-3">
-      {videos.map((video) => (
-        <Link to={"?v=" + video.id} key={video.id}>
-          <ListCard info={video} />
-        </Link>
-      ))}
+      {videos.map((video) => {
+        const maxresUrl = video.snippet.thumbnails?.maxres?.url;
+        if (!maxresUrl) {
+          return null;
+        }
+
+        return (
+          <Link to={"?v=" + video.id} key={video.id}>
+            <ListCard info={video} />
+          </Link>
+        );
+      })}
     </div>
   );
 };
