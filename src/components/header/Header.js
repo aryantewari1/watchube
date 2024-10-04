@@ -11,15 +11,22 @@ import {
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { YOUTUBE_SEARCH_API } from "../../utils/constant";
+import { addSearchCache } from "../../store/Slices/searchSlice";
 const Header = () => {
+  const searchCache = useSelector((store) => store?.search);
   const [inputValue, setInputValue] = useState("");
   const searchSuggestions = useSelector(
     (store) => store?.app?.searchSuggestions
   );
   const dispatch = useDispatch();
+
   useEffect(() => {
     const timer = setTimeout(() => {
-      handleSearchSuggestion();
+      if (searchCache[inputValue]) {
+        dispatch(setSearchSuggestions(searchCache[inputValue]));
+      } else {
+        handleSearchSuggestion();
+      }
     }, 200);
 
     return () => {
@@ -31,7 +38,13 @@ const Header = () => {
     const data = await fetch(YOUTUBE_SEARCH_API + inputValue);
     const json = await data.json();
     console.log(json);
+    const keyValue = json[0];
     dispatch(setSearchSuggestions(json[1]));
+    dispatch(
+      addSearchCache({
+        [keyValue]: json[1],
+      })
+    );
   };
   const handleSideBar = () => {
     dispatch(setShowSideBar());
