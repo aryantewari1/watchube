@@ -18,7 +18,13 @@ const Header = () => {
   );
   const dispatch = useDispatch();
   useEffect(() => {
-    handleSearchSuggestion();
+    const timer = setTimeout(() => {
+      handleSearchSuggestion();
+    }, 200);
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, [inputValue]);
 
   const handleSearchSuggestion = async () => {
@@ -58,8 +64,8 @@ const Header = () => {
         <button className=" bg-gray-200 pl-4 pr-6 rounded-r-full object-contain border border-gray-200">
           <img src={search} className="h-6 object-contain" />
         </button>
-        {inputValue.length != 0 && (
-          <div className="absolute w-8/12 bg-white top-11 ml-10 border border-gray-200 shadow-lg rounded-xl pb-2">
+        {inputValue.length !== 0 && (
+          <div className="absolute w-7/12 bg-white top-11 mr-14 border border-gray-200 shadow-lg rounded-xl pb-2">
             {searchSuggestions.map((s) => {
               return (
                 <div className="flex items-center pl-2 hover:bg-gray-200">

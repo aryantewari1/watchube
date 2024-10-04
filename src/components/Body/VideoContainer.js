@@ -16,7 +16,7 @@ const VideoContainer = () => {
         }
 
         return (
-          <Link to={"?v=" + video.id} key={video.id}>
+          <Link to={"/watch?v=" + video.id} key={video.id}>
             <VideoCard info={video} />
           </Link>
         );
