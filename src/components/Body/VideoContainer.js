@@ -2,8 +2,10 @@ import useYtubeVideo from "../../hooks/useYtubeVideo";
 import { useSelector } from "react-redux";
 import VideoCard from "./VideoCard";
 import { Link } from "react-router-dom";
+import SmallVideoCard from "./SmallVideoCard";
 
 const VideoContainer = () => {
+  const showSideBar = useSelector((store) => store?.app?.showSideBar);
   const videos = useSelector((store) => store.app.videos);
   useYtubeVideo();
   if (videos.length === 0) return;
@@ -17,7 +19,11 @@ const VideoContainer = () => {
 
         return (
           <Link to={"/watch?v=" + video.id} key={video.id}>
-            <VideoCard info={video} />
+            {showSideBar ? (
+              <VideoCard info={video} />
+            ) : (
+              <SmallVideoCard info={video} />
+            )}
           </Link>
         );
       })}

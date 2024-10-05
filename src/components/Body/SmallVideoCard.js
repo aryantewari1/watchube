@@ -1,13 +1,13 @@
-const VideoCard = ({ info }) => {
+const SmallVideoCard = ({ info }) => {
   const { snippet, statistics } = info;
 
   return (
-    <div className="w-96">
+    <div className="w-[21rem]">
       <div className="">
         <img
           src={snippet.thumbnails?.maxres?.url}
           alt={snippet.localized.title}
-          className="w-96 rounded-xl"
+          className="w-[21rem] rounded-xl"
         />
       </div>
       <div className="flex pt-2">
@@ -22,4 +22,4 @@ const VideoCard = ({ info }) => {
   );
 };
 
-export default VideoCard;
+export default SmallVideoCard;
