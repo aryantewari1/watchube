@@ -51,7 +51,7 @@ const Header = () => {
   };
   return (
     <div className="flex top-0 pt-2 z-50 fixed w-full h-14 bg-white">
-      <div className="flex flex-[1] items-center ">
+      <div className="flex flex-[1] items-center pl-2 ">
         <img
           src={ham}
           alt="logo"

@@ -9,7 +9,7 @@ const Body = () => {
   return (
     <div className="">
       {showSideBar ? (
-        <div className="w-72 top-12 h-screen fixed  overflow-y-scroll hide-scrollbar hover:thin-scrollbar">
+        <div className="w-72 top-12 h-screen fixed  ml-1 overflow-y-scroll hide-scrollbar hover:thin-scrollbar">
           <Sidebar />{" "}
         </div>
       ) : (
