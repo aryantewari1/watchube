@@ -6,10 +6,10 @@ const SidebarContainer = ({ section }) => {
       <div className="font-[Roboto] font-medium text-lg py-4">{heading}</div>
       {imageList.map((img, i) => {
         return (
-          <div key={i} className="flex items-center pb-6">
+          <div key={i} className="flex items-center pl-1 pb-6">
             <img
               src={img}
-              className="w-6 h-6 object-contain"
+              className="w-5 h-5  object-contain"
               alt={titleList[i]}
             />
             <span className="pl-6 pt-1 text-black text-sm">{titleList[i]}</span>
