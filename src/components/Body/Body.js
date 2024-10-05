@@ -32,7 +32,7 @@ const Body = () => {
           <VideoContainer />
         </div>
       ) : (
-        <div className="ml-36 mt-4 min-h-screen overflow-y-auto grid grid-cols-4 gap-y-8 ">
+        <div className="ml-36 mt-4 min-h-screen overflow-y-auto grid grid-cols-4 gap-y-8  gap-x-2">
           <VideoContainer />
         </div>
       )}
