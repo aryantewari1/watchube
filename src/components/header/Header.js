@@ -19,6 +19,7 @@ const Header = () => {
     (store) => store?.app?.searchSuggestions
   );
   const dispatch = useDispatch();
+  const [showSuggestions, setShowSuggestions] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -45,6 +46,9 @@ const Header = () => {
         [keyValue]: json[1],
       })
     );
+  };
+  const handleShowSuggestion = () => {
+    setShowSuggestions(!showSuggestions);
   };
   const handleSideBar = () => {
     dispatch(setShowSideBar());
@@ -73,18 +77,23 @@ const Header = () => {
             setInputValue(e.target.value);
           }}
           className="w-7/12 rounded-l-full pl-5 border font-[Roboto]   border-gray-300"
+          onFocus={() => handleShowSuggestion()}
+          onBlur={() => handleShowSuggestion()}
         />
         <button className=" bg-gray-200 pl-4 pr-6 rounded-r-full object-contain border border-gray-200">
-          <img src={search} className="h-6 object-contain" />
+          <img src={search} alt="search" className="h-6 object-contain" />
         </button>
-        {inputValue.length !== 0 && (
-          <div className="absolute w-7/12 bg-white top-11 mr-14 border border-gray-200 shadow-lg rounded-xl pb-2">
+        {showSuggestions && (
+          <div className="absolute w-7/12  bg-white top-11 mr-14  shadow-lg rounded-xl border border-gray-200">
             {searchSuggestions.map((s) => {
               return (
-                <div className="flex items-center pl-2 hover:bg-gray-200">
+                <Link
+                  to={"/results?search_query=" + s}
+                  className="flex items-center pl-2 hover:bg-gray-200"
+                >
                   <img src={search} className="h-5 object-contain" />
                   <p className="w-full px-3 py-2">{s}</p>
-                </div>
+                </Link>
               );
             })}
           </div>
