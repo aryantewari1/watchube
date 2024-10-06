@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { YOUTUBE_SEARCH_API } from "../../utils/constant";
 import { addSearchCache } from "../../store/Slices/searchSlice";
+
 const Header = () => {
   const searchCache = useSelector((store) => store?.search);
   const [inputValue, setInputValue] = useState("");
@@ -38,7 +39,6 @@ const Header = () => {
   const handleSearchSuggestion = async () => {
     const data = await fetch(YOUTUBE_SEARCH_API + inputValue);
     const json = await data.json();
-    console.log(json);
     const keyValue = json[0];
     dispatch(setSearchSuggestions(json[1]));
     dispatch(
@@ -47,12 +47,22 @@ const Header = () => {
       })
     );
   };
-  const handleShowSuggestion = () => {
-    setShowSuggestions(!showSuggestions);
+
+  const handleShowSuggestion = (val) => {
+    setShowSuggestions(val);
   };
+
   const handleSideBar = () => {
     dispatch(setShowSideBar());
   };
+
+  const handleBlur = (e) => {
+    // Check if blur is not happening because of clicking on the suggestions box
+    if (!e.relatedTarget || !e.relatedTarget.closest(".suggestions-box")) {
+      setShowSuggestions(false);
+    }
+  };
+
   return (
     <div className="flex top-0 pt-2 z-50 fixed w-full h-14 bg-white">
       <div className="flex flex-[1] items-center pl-2 ">
@@ -60,15 +70,14 @@ const Header = () => {
           src={ham}
           alt="logo"
           className="w-8 h-8 ml-4 mr-3"
-          onClick={() => {
-            handleSideBar();
-          }}
+          onClick={handleSideBar}
         />
         <Link to="/">
-          <img src={logo} className="w-36 h-11" />
+          <img src={logo} alt="logo" className="w-36 h-11" />
         </Link>
       </div>
-      <div className="flex flex-[4] justify-center h-10 relative">
+
+      <div className="flex flex-[4] justify-center h-10 relative ">
         <input
           type="text"
           placeholder="Search"
@@ -76,22 +85,30 @@ const Header = () => {
           onChange={(e) => {
             setInputValue(e.target.value);
           }}
-          className="w-7/12 rounded-l-full pl-5 border font-[Roboto]   border-gray-300"
-          onFocus={() => handleShowSuggestion()}
-          onBlur={() => handleShowSuggestion()}
+          onFocus={() => handleShowSuggestion(true)}
+          onBlur={handleBlur}
+          className="w-7/12 rounded-l-full pl-5 border font-[Roboto] border-gray-300"
         />
-        <button className=" bg-gray-200 pl-4 pr-6 rounded-r-full object-contain border border-gray-200">
+        <button className="bg-gray-200 pl-4 pr-6 rounded-r-full object-contain border border-gray-200">
           <img src={search} alt="search" className="h-6 object-contain" />
         </button>
+
         {showSuggestions && (
-          <div className="absolute w-7/12  bg-white top-11 mr-14  shadow-lg rounded-xl border border-gray-200">
+          <div
+            className="absolute w-7/12 bg-white top-11 mr-14 shadow-lg rounded-xl border border-gray-200 suggestions-box"
+            onMouseDown={(e) => e.preventDefault()} // Prevent blur when clicking on suggestions
+          >
             {searchSuggestions.map((s) => {
               return (
                 <Link
                   to={"/results?search_query=" + s}
                   className="flex items-center pl-2 hover:bg-gray-200"
                 >
-                  <img src={search} className="h-5 object-contain" />
+                  <img
+                    src={search}
+                    alt="search icon"
+                    className="h-5 object-contain"
+                  />
                   <p className="w-full px-3 py-2">{s}</p>
                 </Link>
               );
@@ -99,7 +116,8 @@ const Header = () => {
           </div>
         )}
       </div>
-      <div className="flex flex-[1]  items-center justify-end">
+
+      <div className="flex flex-[1] items-center justify-end">
         <img
           src={notif}
           alt="notification"
