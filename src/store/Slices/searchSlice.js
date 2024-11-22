@@ -7,7 +7,10 @@ const searchSlice = createSlice({
     addSearchCache: (state, action) => {
       return { ...action.payload, ...state };
     },
+    clearSearchCache: () => {
+      return {};
+    },
   },
 });
-export const { addSearchCache } = searchSlice.actions;
+export const { addSearchCache, clearSearchCache } = searchSlice.actions;
 export default searchSlice.reducer;

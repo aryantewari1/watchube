@@ -11,7 +11,10 @@ import {
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { YOUTUBE_SEARCH_API } from "../../utils/constant";
-import { addSearchCache } from "../../store/Slices/searchSlice";
+import {
+  addSearchCache,
+  clearSearchCache,
+} from "../../store/Slices/searchSlice";
 
 const Header = () => {
   const searchCache = useSelector((store) => store?.search);
@@ -23,6 +26,7 @@ const Header = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
 
   useEffect(() => {
+    if (inputValue.length === 0) dispatch(clearSearchCache());
     const timer = setTimeout(() => {
       if (searchCache[inputValue]) {
         dispatch(setSearchSuggestions(searchCache[inputValue]));
