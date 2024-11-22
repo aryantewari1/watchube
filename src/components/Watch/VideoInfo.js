@@ -27,6 +27,13 @@ const VideoInfo = () => {
       <div className="mt-2 w-11/12">
         <p className="font-[Roboto] text-xl font-bold">{snippet?.title}</p>
       </div>
+      <div className="mt-2 w-11/12">
+        <div>
+          <div></div>
+          <div></div>
+        </div>
+        <div></div>
+      </div>
     </div>
   );
 };

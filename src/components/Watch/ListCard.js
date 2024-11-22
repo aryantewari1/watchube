@@ -1,5 +1,4 @@
 const ListCard = ({ info }) => {
-  console.log(info);
   const { snippet, statistics } = info;
   return (
     <div className="flex gap-x-2 mb-4">

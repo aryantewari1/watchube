@@ -8,3 +8,61 @@ export const YOUTUBE_SEARCH_API =
 
 export const YOUTUBE_LIST_API =
   "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=";
+export const comments = [
+  {
+    name: "notbasickk",
+    text: "lorem ipsum something something",
+    replies: [
+      {
+        name: "notbasickk",
+        text: "lorem ipsum something something",
+        replies: [
+          {
+            name: "notbasickk",
+            text: "lorem ipsum something something",
+            replies: [],
+          },
+        ],
+      },
+      {
+        name: "notbasickk",
+        text: "lorem ipsum something something",
+        replies: [
+          {
+            name: "notbasickk",
+            text: "lorem ipsum something something",
+            replies: [
+              {
+                name: "notbasickk",
+                text: "lorem ipsum something something",
+                replies: [
+                  {
+                    name: "notbasickk",
+                    text: "lorem ipsum something something",
+                    replies: [
+                      {
+                        name: "notbasickk",
+                        text: "lorem ipsum something something",
+                        replies: [],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: "notbasickk",
+    text: "lorem ipsum something something",
+    replies: [],
+  },
+  {
+    name: "notbasickk",
+    text: "lorem ipsum something something",
+    replies: [],
+  },
+];
