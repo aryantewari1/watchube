@@ -7,4 +7,4 @@ export const YOUTUBE_SEARCH_API =
   "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
 
 export const YOUTUBE_LIST_API =
-  "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=";
+  "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=";

@@ -5,9 +5,10 @@ import { Link } from "react-router-dom";
 import SmallVideoCard from "./SmallVideoCard";
 
 const VideoContainer = () => {
+  useYtubeVideo();
   const showSideBar = useSelector((store) => store?.app?.showSideBar);
   const videos = useSelector((store) => store.app.videos);
-  useYtubeVideo();
+
   if (videos.length === 0) return;
   return (
     <>

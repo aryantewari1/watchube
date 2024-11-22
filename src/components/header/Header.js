@@ -39,6 +39,7 @@ const Header = () => {
   const handleSearchSuggestion = async () => {
     const data = await fetch(YOUTUBE_SEARCH_API + inputValue);
     const json = await data.json();
+    console.log(json);
     const keyValue = json[0];
     dispatch(setSearchSuggestions(json[1]));
     dispatch(
@@ -48,19 +49,8 @@ const Header = () => {
     );
   };
 
-  const handleShowSuggestion = (val) => {
-    setShowSuggestions(val);
-  };
-
   const handleSideBar = () => {
     dispatch(setShowSideBar());
-  };
-
-  const handleBlur = (e) => {
-    // Check if blur is not happening because of clicking on the suggestions box
-    if (!e.relatedTarget || !e.relatedTarget.closest(".suggestions-box")) {
-      setShowSuggestions(false);
-    }
   };
 
   return (
@@ -85,8 +75,8 @@ const Header = () => {
           onChange={(e) => {
             setInputValue(e.target.value);
           }}
-          onFocus={() => handleShowSuggestion(true)}
-          onBlur={handleBlur}
+          onFocus={() => setShowSuggestions(true)}
+          onBlur={() => setShowSuggestions(false)}
           className="w-7/12 rounded-l-full pl-5 border font-[Roboto] border-gray-300"
         />
         <button className="bg-gray-200 pl-4 pr-6 rounded-r-full object-contain border border-gray-200">
@@ -98,11 +88,12 @@ const Header = () => {
             className="absolute w-7/12 bg-white top-11 mr-14 shadow-lg rounded-xl border border-gray-200 suggestions-box"
             onMouseDown={(e) => e.preventDefault()} // Prevent blur when clicking on suggestions
           >
-            {searchSuggestions.map((s) => {
+            {searchSuggestions.map((s, i) => {
               return (
                 <Link
                   to={"/results?search_query=" + s}
                   className="flex items-center pl-2 hover:bg-gray-200"
+                  key={i}
                 >
                   <img
                     src={search}

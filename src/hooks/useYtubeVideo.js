@@ -6,6 +6,7 @@ import { YOUTUBE_API } from "../utils/constant";
 const useYtubeVideo = () => {
   const dispatch = useDispatch();
   const apiKey = process.env.REACT_APP_YTUBE_API_KEY;
+
   useEffect(() => {
     getYoutubeVideos();
   }, []);
@@ -13,7 +14,6 @@ const useYtubeVideo = () => {
   const getYoutubeVideos = async () => {
     const data = await fetch(YOUTUBE_API + apiKey);
     const json = await data.json();
-
     dispatch(setVideos(json.items));
   };
 };
