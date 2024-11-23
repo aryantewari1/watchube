@@ -10,7 +10,7 @@ import {
 } from "../../store/Slices/appSlice";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { YOUTUBE_SEARCH_API } from "../../utils/constant";
+import { userLogo, YOUTUBE_SEARCH_API } from "../../utils/constant";
 import {
   addSearchCache,
   clearSearchCache,
@@ -120,7 +120,7 @@ const Header = () => {
         <img src={video} alt="video" className="w-10 h-7 object-contain mx-2" />
         <img
           alt="videos"
-          src="https://yt3.ggpht.com/ytc/AIdro_lO1bg78qyz0HR_ZIH8s5qeSfzYr9fVSd1DukOaqgMnQ42rwYpPYWufcdbL9Z9Zby0O7g=s88-c-k-c0x00ffffff-no-rj"
+          src={userLogo}
           className="w-9 h-9 mx-2 mr-10 rounded-full"
         />
       </div>

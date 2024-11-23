@@ -1,6 +1,6 @@
 import CommentListContainer from "./CommentListContainer";
 import VideoInfo from "./VideoInfo";
-import { comments } from "../../utils/constant";
+
 const LeftContainer = () => {
   return (
     <div className="ml-24 flex flex-col">
@@ -9,7 +9,7 @@ const LeftContainer = () => {
       </div>
       <div>
         <div className="">
-          <CommentListContainer commentsList={comments} />
+          <CommentListContainer />
         </div>
       </div>
     </div>

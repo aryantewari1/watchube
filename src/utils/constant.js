@@ -66,3 +66,5 @@ export const comments = [
     replies: [],
   },
 ];
+export const userLogo =
+  "https://yt3.ggpht.com/ytc/AIdro_lO1bg78qyz0HR_ZIH8s5qeSfzYr9fVSd1DukOaqgMnQ42rwYpPYWufcdbL9Z9Zby0O7g=s88-c-k-c0x00ffffff-no-rj";
