@@ -4,7 +4,9 @@ import VideoList from "./VideoList";
 const RightContainer = () => {
   return (
     <div className="overflow-x-scroll hide-scrollbar w-96">
-      <ButtonList />
+      <div className="overflow-x-scroll hide-scrollbar">
+        <ButtonList />
+      </div>
       <VideoList />
     </div>
   );
