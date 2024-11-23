@@ -1,3 +1,4 @@
+import channelLogo from "../../assets/images/information-button.png";
 const VideoCard = ({ info }) => {
   const { snippet, statistics } = info;
 
@@ -22,7 +23,9 @@ const VideoCard = ({ info }) => {
         />
       </div>
       <div className="flex pt-2">
-        <div className="flex-[2] "></div>
+        <div className="flex-[2] pl-1">
+          <img src={channelLogo} className="w-10" alt="channel logo" />
+        </div>
         <div className="flex-[11] ">
           <p className="font-medium leading-tight">{snippet.title}</p>
           <p className="pt-2 text-gray-700">{snippet.channelTitle}</p>
