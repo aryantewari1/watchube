@@ -1,22 +1,29 @@
 import { useDispatch, useSelector } from "react-redux";
 import LiveChat from "./LiveChat";
 import { useEffect, useState } from "react";
-import { addChat } from "../../store/Slices/LiveChatSlice";
-import { generate } from "../../utils/helper";
+import { addChat, removeChat } from "../../store/Slices/LiveChatSlice";
+import { generate, generateImageLinks } from "../../utils/helper";
 import { makeid } from "../../utils/helper";
 const LiveContainer = () => {
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState();
   const liveChats = useSelector((store) => store?.liveChat?.chats);
   useEffect(() => {
-    setInterval(() => {
+    const id = setInterval(() => {
+      console.log("api called");
       dispatch(
         addChat({
           name: generate(),
           text: makeid(8),
+          imageSrc: generateImageLinks(),
         })
       );
     }, 2000);
+    return () => {
+      console.log("api removed");
+      dispatch(removeChat());
+      clearInterval(id);
+    };
   }, []);
   return (
     <div className="flex flex-col w-full h-[580px] mb-3 border-[1px] border-slate-300 rounded-xl">
@@ -36,6 +43,7 @@ const LiveContainer = () => {
               addChat({
                 name: "notbasickk",
                 text: inputValue,
+                imageSrc: generateImageLinks(),
               })
             );
             setInputValue("");

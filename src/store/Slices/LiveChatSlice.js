@@ -10,8 +10,11 @@ const LiveChatSlice = createSlice({
       state.chats.splice(10, 1);
       state.chats.unshift(action.payload);
     },
+    removeChat: (state) => {
+      state.chats.length = 0;
+    },
   },
 });
 
-export const { addChat } = LiveChatSlice.actions;
+export const { addChat, removeChat } = LiveChatSlice.actions;
 export default LiveChatSlice.reducer;

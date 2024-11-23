@@ -190,3 +190,21 @@ export function makeid(length) {
   }
   return result;
 }
+
+export function generateImageLinks() {
+  const images = [
+    "usJWgL7b",
+    "kxsLXb8b",
+    "XQbcjvUb",
+    "j3CVSSMb",
+    "BQNvBVib",
+    "DZq0ORlb",
+    "t73Tvlqb",
+
+    "u3sBUMjb",
+  ];
+  const randomPick = images[(Math.random() * images.length) | 0];
+  const url = "http://i.imgur.com/" + randomPick + ".jpg";
+
+  return url;
+}
