@@ -1,30 +1,31 @@
+import { useDispatch, useSelector } from "react-redux";
 import LiveChat from "./LiveChat";
-
+import { useEffect } from "react";
+import { addChat } from "../../store/Slices/LiveChatSlice";
+import { generate } from "../../utils/helper";
+import { makeid } from "../../utils/helper";
 const LiveContainer = () => {
+  const dispatch = useDispatch();
+  const liveChats = useSelector((store) => store?.liveChat?.chats);
+  useEffect(() => {
+    setInterval(() => {
+      dispatch(
+        addChat({
+          name: generate(),
+          text: makeid(8),
+        })
+      );
+    }, 1000);
+  }, []);
   return (
     <div className="flex flex-col w-full h-[580px] mb-3 border-[1px] border-slate-300 rounded-xl">
       <div className="p-4 w-full border-b-[1px] border-slate-300 text-lg">
         Top chat
       </div>
       <div className="flex flex-col-reverse w-full h-5/6 bg-gray-50  overflow-y-scroll">
-        <LiveChat />
-        <LiveChat />
-        <LiveChat />
-        <LiveChat />
-        <LiveChat />
-        <LiveChat />
-        <LiveChat />
-        <LiveChat />
-        <LiveChat />
-        <LiveChat />
-        <LiveChat />
-        <LiveChat />
-        <LiveChat />
-        <LiveChat />
-        <LiveChat />
-        <LiveChat />
-        <LiveChat />
-        <LiveChat />
+        {liveChats.map((chat) => (
+          <LiveChat chat={chat} />
+        ))}
       </div>
       <div className="w-full p-2 flex flex-row-reverse  justify-around items-center ">
         <button className="px-2 py-1 ml-2 bg-gray-100">send</button>
