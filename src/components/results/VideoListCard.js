@@ -5,16 +5,18 @@ const VideoListCard = ({ data }) => {
     <div className="flex mb-4">
       <div className="">
         {id.kind === "youtube#video" ? (
-          <img
-            src={snippet?.thumbnails?.medium?.url}
-            alt="thumbnail"
-            className="w-[30rem] rounded-xl"
-          />
+          <div className="w-[30rem] h-72">
+            <img
+              src={snippet?.thumbnails?.medium?.url}
+              alt="thumbnail"
+              className="w-full h-full rounded-xl object-cover "
+            />
+          </div>
         ) : (
           <img
             src={snippet?.thumbnails?.medium?.url}
             alt="thumbnail"
-            className=" w-44 rounded-full"
+            className=" w-40 rounded-full"
           />
         )}
       </div>
