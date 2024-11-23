@@ -1,13 +1,19 @@
 import ButtonList from "../Body/ButtonList";
+import LiveContainer from "./LiveContainer";
 import VideoList from "./VideoList";
 
 const RightContainer = () => {
   return (
-    <div className="overflow-x-scroll hide-scrollbar w-96">
-      <div className="overflow-x-scroll hide-scrollbar">
-        <ButtonList />
+    <div className="flex flex-col">
+      <div>
+        <LiveContainer />
       </div>
-      <VideoList />
+      <div className="w-96">
+        <div className="overflow-x-scroll hide-scrollbar">
+          <ButtonList />
+        </div>
+        <VideoList />
+      </div>
     </div>
   );
 };

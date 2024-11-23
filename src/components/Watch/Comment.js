@@ -34,7 +34,7 @@ const Comment = ({ comment }) => {
       </div>
       {showReplies && (
         <div className="border-l-2 border-black ml-14">
-          {replies.length != 0 &&
+          {replies.length !== 0 &&
             replies.map((r, i) => <Comment comment={r} key={i} />)}
         </div>
       )}
