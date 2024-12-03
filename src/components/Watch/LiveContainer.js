@@ -10,7 +10,6 @@ const LiveContainer = () => {
   const liveChats = useSelector((store) => store?.liveChat?.chats);
   useEffect(() => {
     const id = setInterval(() => {
-      console.log("api called");
       dispatch(
         addChat({
           name: generate(),
@@ -20,7 +19,6 @@ const LiveContainer = () => {
       );
     }, 2000);
     return () => {
-      console.log("api removed");
       dispatch(removeChat());
       clearInterval(id);
     };
@@ -31,8 +29,8 @@ const LiveContainer = () => {
         Top chat
       </div>
       <div className="flex flex-col-reverse w-full h-5/6 bg-gray-50  overflow-y-scroll">
-        {liveChats.map((chat) => (
-          <LiveChat chat={chat} />
+        {liveChats.map((chat, i) => (
+          <LiveChat chat={chat} key={i} />
         ))}
       </div>
       <div className="w-full p-2 flex flex-row-reverse  justify-around items-center ">
